@@ -1,0 +1,327 @@
+$def with (username, verified, profpic, upvotes, downvotes, isteacher, educatedat, teachesat, profilelink, error_msg=None, success=None)
+
+<head>
+
+<title>EnsiColab</title>
+
+<style>
+	body {
+		font-family: sans-serif;
+		font-size:18px;
+		background-color:#e6e9ed;
+		/* Safari 4-5, Chrome 1-9 */
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e6e9ed), to(#8c8c8c));
+		/* Safari 5.1, Chrome 10+ */
+		background: -webkit-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* Firefox 3.6+ */
+		background: -moz-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* IE 10 */
+		background: -ms-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* Opera 11.10+ */
+		background: -o-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);		
+	}
+	#bigwrapper {
+		width: 100%;
+		min-height: 100%;
+	}
+	#headerwrapper {
+		width: 900px;
+		height:98px;
+		
+		border-width: 0px;
+	}
+	#logowrapper {
+		width:590px;
+		float:left;
+		display: block;
+		
+		border-width: 0px;
+	}
+	#logowrapper:hover {
+		cursor:pointer;
+	}
+	#userinfowrapper {
+		width: 304px;
+		float: right;
+		display: block;
+		padding:0px;
+		background-color:#c98a03;
+		border-radius:4px;
+		background-color:rgba(201, 138, 3, 0.6);
+	}
+	#userinfotop {
+		width:300px;
+		border-style:none;
+		background-color:#FFC445;
+		padding:2px;
+		float:right;
+		border-radius: 4px 4px 0px 0px;
+		background-color:rgba(255, 196, 69, 1);
+	}
+	#logintext {
+		width:210px;
+		height:30px;
+		font-size:18px;
+		padding-left:3px;
+		font-weight:bold;
+	}
+	#loginbutton {
+		width:210px;
+		height:30px;
+		font-size:18px;
+		border-radius:4px;
+		border-width:1px;
+		border-color:#71AAFF #236FE0 #236FE0 #71AAFF;
+		background-color:#3686FF;
+		color:#FFC445;
+		font-weight:bold;
+	}
+	#bodywrapper {
+		width:900px;
+		
+		border-width:0px;
+	}
+	#bigquote {
+		color:#236FE0;
+		font-size:26px;
+		font-weight:bold;
+	}
+	#innerbody {
+		color:#0f428e;
+		font-size:20px;
+	}
+	#innerbody.h3 {
+		color:#3686FF;
+	}
+	#errorbox {
+		color:white;
+		background-color:red;
+		padding:4px;
+		font-size:small;
+		font-weight:bold;
+	}
+	#bigpostbutton {
+		font-weight:bold;
+		padding-top:7px;
+		height:33px;
+		border-color:#ffdb8d #c98a03 #c98a03 #ffdb8d;
+		background-color:#FFC445;
+		color:#3686FF;
+		border-style:solid;
+		border-width:1px;
+		border-radius:4px;
+	}
+	#bigpostbutton:active {
+		border-color: #c98a03 #ffdb8d #ffdb8d #c98a03;
+	}
+	#hoverforpointer:hover {
+		cursor:pointer;
+	}
+	input[type='text'], input[type='password'], label {
+		color:black;
+		width:100%;
+		height:40px;
+		font-size:18px;
+		padding-left:7px;
+	}
+</style>
+
+</head>
+
+<body>
+<div id="bigwrapper" align="center">
+
+	<div id="headerwrapper">
+		
+		<div id="logowrapper" align="left" onclick="window.location = '/'"><img src="http://localhost:8080/static/EnsiColabLogo.png" /></div>
+		
+		
+		
+		<div id="userinfowrapper" align="left">
+			<div id="userinfotop" align="left">
+				<img src="$profpic" style="max-height:30px; max-width:30px; margin:2px; border-style:none; float:left;" />
+				<div style="display:inline-block; color:#3686FF; font-weight:bold; border-style:none; padding:6px; padding-top:8px;">
+					<div onclick="window.location = '$profilelink'" id="hoverforpointer">
+					$username
+					</div>
+				</div>
+				
+				<div style="float:right; padding:8px 8px 6px 6px;">
+					<a href="/logout" style="color:#0f428e; text-decoration:none;">
+					(sair)
+					</a>
+				</div>
+				
+				<div id="hoverforpointer" style="float:right;"><img title="preferências" src="/static/settings.png" onclick="window.location = '/settings'" style="width:20px; height:20px; margin-top:8px; margin-bottom:7px;" /></div>
+				
+			</div>
+			
+			
+			
+			<div style=" width:180px; border-style:none; padding:4px 8px 4px 8px; display:inline-block;" align="left">
+				
+				<div>
+					<img src="http://localhost:8080/static/hat.png" style="height:25px; width:25px; float:left;"/>
+					<div style="font-size:small; color:#0f428e; font-weight:bold; display:inline-block; padding:7px;">$educatedat</div>
+				</div>
+				
+				<div>
+					<img src="http://localhost:8080/static/apple.png" style="height:25px; width:25px; float:left;"/>
+					<div style="font-size:small; color:#0f428e; font-weight:bold; display:inline-block; padding:7px;">
+					$if isteacher:
+						$teachesat
+					$else:
+						(Não é Professor)
+					</div>
+				</div>
+				
+				<div>
+					<img src="http://localhost:8080/static/verified.png" style="height:25px; width:25px; float:left;"/>
+					<div style="font-size:small; color:#0f428e; font-weight:bold; display:inline-block; padding:7px;">
+					$if verified:
+						Verificado!
+					$else:
+						(Não Verificado)				
+					</div>
+				</div>
+				
+			</div>
+			
+			<div style="display:inline-block; border-style:none; width:103px; float:right; color:#0f428e; padding-top:18px;">
+				<small>
+				
+				<div style="width:100%;">
+					<img src="http://localhost:8080/static/upvote.png" style="width:20px; height:20px; float:left;" />
+					<div style="font-weight:bold; display:inline-block; padding:2px 0px 0px 10px;">$upvotes</div>
+				</div>
+				
+				<br/>
+				
+				<div style="width:100%;">
+					<img src="http://localhost:8080/static/downvote.png" style="width:20px; height:20px; float:left;" />
+					<div style="font-weight:bold; display:inline-block; padding:2px 0px 0px 10px;">$downvotes</div>
+				</div>
+				
+				</small>
+			</div>
+		</div>
+	</div>
+	
+	<div id="bodywrapper" align="left">
+	
+		<br/><br/><br/><br/>
+	
+		<div id="bigquote" align="left">
+		<img src="http://localhost:8080/static/upload.png" style="width:25px; height:25px; float:left; margin-top:2px;" />&nbsp;Upload de Vídeo
+		</div>
+		<br/>
+	
+		$if error_msg:
+			<div id="errorbox">$:error_msg</div><br/>
+		$if success:
+			<div id="successbox">$success</div><br/>
+	
+		<div style="width:100%; color:#236FE0; font-size:small; font-weight:bold; background-color:#c8cacd; padding:20px;">
+		OBS: Nós não guardamos os vídeos em nossos servers. Para fazer o upload de um vídeo para nosso site, você deve <a href="/about?i=youtubeupload">fazer upload no YouTube</a>, depois <a href="/about?i=youtubelink">copiar o link do vídeo no youtube</a> e usar esse link no formulário abaixo. Para um tutorial completo de como transferir seus vídeos para o computador, fazer upload e selecionar preferências de privacidade no YouTube, clique <a href="/about?i=uploading">aqui</a>
+		<br/><br/>Lembre-se de filmar suas aulas seguindo nossas <a href="/about?i=guidelines">guias gerais</a>, para garantir a segurança e privacidade do professor e do aluno. Nesse link, você também encontrará dicas de como filmar suas aulas e conseguir qualidade de gravação e de audio. Isso será útil para que outros professores possam entender suas aulas e, assim, fornecer feedback.
+		</div>
+		<br/>
+	
+	
+		<div id="innerbody" style="padding:0px 40px 0px 40px;">
+			
+			<div style="width:100%;">
+				<form action="" method="POST" enctype="multipart/form-data">
+					<input type="text" name="videolink" placeholder="link da vídeo-aula no YouTube"><br/><br/>
+					
+					<input type="text" name="videoname" placeholder="nome da vídeo-aula (seja direto e claro no que a aula ensina)"><br/><br/>
+					<textarea type="text" name="videodescription" placeholder="descrição da aula (inclua notas de aula, links para materiais extras, perguntas sobre as quais você quer feedback, etc)" style="color:black;
+		width:100%;
+		height:100px;
+		font-size:18px;
+		padding-left:7px;"></textarea><br/><br/>
+					
+					<span style="color:#8f8a88;">Matéria relacionada:</span>
+					<select name="subject">
+						<option value="earlymath">Iniciação à Matemática</option>
+						<option value="arithmetic">Aritimética</option>
+						<option value="prealgebra">Pré-Álgebra</option>
+						<option value="algebraone">Álgebra I</option>
+						<option value="geometry">Geometry</option>
+						<option value="algebratwo">Álgebra II</option>
+						<option value="trigonometry">Trigonometria</option>
+						<option value="probabilityandstatistics">Probabilidade e Estatística</option>
+						<option value="precalculus">Pré-Calculo</option>
+						<option value="differentialcalculus">Cálculo Diferencial</option>
+						<option value="integralcalculus">Cálculo Integral</option>
+						<option value="multivariablecalculus">Cálculo Multivariável</option>
+						<option value="differentialequations">Equações Diferenciais</option>
+						<option value="linearalgebra">Álgebra Linear</option>
+						
+						<option value=""></option>
+						
+						<option value="biology">Biologia</option>
+						<option value="physics">Física</option>
+						<option value="chemistry">Química</option>
+						<option value="organicchemistry">Química Orgânica</option>
+						<option value="astronomy">Astronomia</option>
+					
+						<option value=""></option>
+						
+						<option value="economy">Economia</option>
+						<option value="entrepreneurship">Empreendedorismo</option>
+						
+						<option value=""></option>
+						
+						<option value="worldhistory">História Geral</option>
+						<option value="brazilhistory">História do Brasil</option>
+						<option value="arthistory">História da Arte</option>
+						<option value="music">Música</option>
+						<option value="philosophy">Filosofia</option>
+						<option value="sociology">Sociologia</option>
+						<option value="portuguese">Língua Portuguesa</option>
+						<option value="literature">Literatura</option>
+						<option value="essay">Redação</option>
+						<option value="english">Língua Inglesa</option>
+						
+						<option value=""></option>
+						
+						<option value="computerscience">Ciência da Computação</option>
+						
+						<option value=""></option>
+												
+						<option value="other">Outro</option>
+					</select>
+					
+					<br/><br/>
+						
+					<input type="text" name="topicone" placeholder="tópico da aula (opcional)"><br/><br/>
+					
+					<div style="width:100%;" id="firstlink" align='center'><input type="button" style="width:200px;" onclick="javascript:document.getElementById('topic2').style.display = 'block'; document.getElementById('firstlink').style.display = 'none'; document.getElementById('secondlink').style.display = 'block';" value="adicionar mais um tópico"></div>
+					<input type="text" name="topictwo" placeholder="tópico da aula (opcional)" id="topic2" style="display:none;"><br/>
+					
+					<div style="width:100%; display:none;" id="secondlink" align='center'><input type="button" style="width:200px;" onclick="javascript:document.getElementById('topic3').style.display = 'block'; document.getElementById('secondlink').style.display = 'none'; document.getElementById('thirdlink').style.display = 'block';" value="adicionar mais um tópico"></div>
+					<input type="text" style="display:none;" name="topicthree" placeholder="tópico da aula (opcional)" id="topic3"><br/>
+					
+					<div style="width:100%; display:none;" id="thirdlink" align='center'><input type="button" style="width:200px;" onclick="javascript:document.getElementById('topic4').style.display = 'block'; document.getElementById('thirdlink').style.display = 'none'; document.getElementById('fourthlink').style.display = 'block';" value="adicionar mais um tópico"></div>
+					<input type="text" style="display:none;" name="topicfour" placeholder="tópico da aula (opcional)" id="topic4"><br/>
+					
+					<div style="width:100%; display:none;" id="fourthlink" align='center'><input type="button" style="width:200px;" onclick="javascript:document.getElementById('topic5').style.display = 'block'; document.getElementById('fourthlink').style.display = 'none';" value="adicionar mais um tópico"></div>
+					<input type="text" style="display:none;" name="topicfive" placeholder="tópico da aula (opcional)" id="topic5"><br/>
+					
+					<input type="checkbox" name="isCC"> Quero que meu vídeo possa ser utilizado por outros professores em suas aulas e vídeo-aulas (utilizar copyright <b>creative commons</b>) <a href="/about?i=creativecommons">saiba mais</a>
+					
+					<br/><br/>
+					<input type="submit" name="submit" value="upload" style="width:100%; height:40px; font-size:18px; border-radius:4px; border-width:1px; border-color:#71AAFF #236FE0 #236FE0 #71AAFF; background-color:#3686FF; color:#FFC445; font-weight:bold;">
+				</form>
+			</div>
+			
+		</div>
+		
+	
+		<br/><br/><br/><br/>
+	
+	</div>
+	
+</div>
+</body>

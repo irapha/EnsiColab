@@ -1,0 +1,366 @@
+$def with (username, verified, profpic, upvotes, downvotes, isteacher, educatedat, teachesat, profilelink, error_msg, success, videoname, videoembed, videodescription, subject, videoupvotes, videodownvotes, isCC, datetime, topiclist, posterusername, posterverified, posterprofpicpath, posteristeacher, postereducatedat, posterteachesat, posterprofilelink, videoid, viewcount, didvote, isupvote)
+
+<head>
+
+<title>EnsiColab</title>
+
+<style>
+	body {
+		font-family: sans-serif;
+		font-size:18px;
+		background-color:#e6e9ed;
+		/* Safari 4-5, Chrome 1-9 */
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e6e9ed), to(#8c8c8c));
+		/* Safari 5.1, Chrome 10+ */
+		background: -webkit-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* Firefox 3.6+ */
+		background: -moz-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* IE 10 */
+		background: -ms-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* Opera 11.10+ */
+		background: -o-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);		
+	}
+	#bigwrapper {
+		width: 100%;
+		min-height: 100%;
+	}
+	#headerwrapper {
+		width: 900px;
+		height:98px;
+		
+		border-width: 0px;
+	}
+	#logowrapper {
+		width:590px;
+		float:left;
+		display: block;
+		
+		border-width: 0px;
+	}
+	#logowrapper:hover {
+		cursor:pointer;
+	}
+	#userinfowrapper {
+		width: 304px;
+		float: right;
+		display: block;
+		padding:0px;
+		background-color:#c98a03;
+		border-radius:4px;
+		background-color:rgba(201, 138, 3, 0.6);
+	}
+	#userinfotop {
+		width:300px;
+		border-style:none;
+		background-color:#FFC445;
+		padding:2px;
+		float:right;
+		border-radius: 4px 4px 0px 0px;
+		background-color:rgba(255, 196, 69, 1);
+	}
+	#logintext {
+		width:210px;
+		height:30px;
+		font-size:18px;
+		padding-left:3px;
+		font-weight:bold;
+	}
+	#loginbutton {
+		width:210px;
+		height:30px;
+		font-size:18px;
+		border-radius:4px;
+		border-width:1px;
+		border-color:#71AAFF #236FE0 #236FE0 #71AAFF;
+		background-color:#3686FF;
+		color:#FFC445;
+		font-weight:bold;
+	}
+	#bodywrapper {
+		width:900px;
+		
+		border-width:0px;
+	}
+	#bigquote {
+		color:#236FE0;
+		font-size:26px;
+		font-weight:bold;
+	}
+	#innerbody {
+		color:#0f428e;
+		font-size:20px;
+	}
+	#innerbody.h3 {
+		color:#3686FF;
+	}
+	#errorbox {
+		color:white;
+		background-color:red;
+		padding:4px;
+		font-size:small;
+		font-weight:bold;
+	}
+	#bigpostbutton {
+		font-weight:bold;
+		padding-top:3px;
+		margin-top:7px;
+		height:25px;
+		border-color:#ffdb8d #c98a03 #c98a03 #ffdb8d;
+		background-color:#FFC445;
+		color:#3686FF;
+		border-style:solid;
+		border-width:1px;
+		border-radius:4px;
+	}
+	#bigpostbutton:active {
+		border-color: #c98a03 #ffdb8d #ffdb8d #c98a03;
+	}
+	#hoverforpointer:hover {
+		cursor:pointer;
+	}
+	input[type='text'], input[type='password'], label {
+		color:black;
+		width:100%;
+		height:40px;
+		font-size:18px;
+		padding-left:7px;
+	}
+	#videodescription {
+		background-color:#fee8b3;
+		width:250px;
+		min-height:30px;
+		padding:5px;
+		/* Safari 4-5, Chrome 1-9 */
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fee8b3), to(#ffe094));
+		/* Safari 5.1, Chrome 10+ */
+		background: -webkit-linear-gradient(top, #ffe094 0px, #fee8b3 15px);
+		/* Firefox 3.6+ */
+		background: -moz-linear-gradient(top, #ffe094 0px, #fee8b3 15px);
+		/* IE 10 */
+		background: -ms-linear-gradient(top, #ffe094 0px, #fee8b3 15px);
+		/* Opera 11.10+ */
+		background: -o-linear-gradient(top, #ffe094 0px, #fee8b3 15px);
+		display:inline-block;
+	}
+	#postcommentwrapper {
+		width:885px;
+		min-height:60px;
+		background-color:a7caff;
+		padding:7px;
+		/* Safari 4-5, Chrome 1-9 */
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a7caff), to(#7cb0ff));
+		/* Safari 5.1, Chrome 10+ */
+		background: -webkit-linear-gradient(top, #7cb0ff 0px, #a7caff 15px);
+		/* Firefox 3.6+ */
+		background: -moz-linear-gradient(top, #7cb0ff 0px, #a7caff 15px);
+		/* IE 10 */
+		background: -ms-linear-gradient(top, #7cb0ff 0px, #a7caff 15px);
+		/* Opera 11.10+ */
+		background: -o-linear-gradient(top, #7cb0ff 0px, #a7caff 15px);
+		display:inline-block;
+		float:left;
+		margin-top:15px;
+	}
+</style>
+
+</head>
+
+<body>
+<div id="bigwrapper" align="center">
+
+	<div id="headerwrapper">
+		
+		<div id="logowrapper" align="left" onclick="window.location = '/'"><img src="http://localhost:8080/static/EnsiColabLogo.png" /></div>
+		
+		
+	</div>
+	
+	<div id="bodywrapper" align="left">
+	
+	<br/>
+	
+		<div id="bigquote" align="left">
+		$videoname
+			<a href="/about?i=creativecommons">
+				
+				$if isCC:
+					<img src="static/CC.png" title="Este vídeo tem copyright Creative Commons.
+					Clique para saber mais." style="height:24px; width:24px; float:right; padding-top:3px;" />
+				$else:
+					<img src="static/CCgrey.png" title="Este vídeo não tem copyright Creative Commons.
+					Clique para saber mais." style="height:24px; width:24px; float:right; padding-top:3px;" />
+			</a>
+		</div>
+	
+	$:videoembed
+	<img src="static/triangle_viddesc.png" />
+	<div id="videodescription">
+		
+		<div style="width:250px; min-height:111px; display:inline-block;" id="descriptiontop">
+			<img src="$posterprofpicpath" style="max-height:30px; max-width:30px; margin:2px; border-style:none; float:left;" />
+		
+			<div style="display:inline-block; color:#3686FF; font-weight:bold; border-style:none; padding:7px; padding-top:8px; float:left;">
+				<div onclick="window.location = '$posterprofilelink'" id="hoverforpointer">
+				$posterusername
+				</div>
+			</div>
+			
+			$if posterverified:
+				<div style="display:inline-block; color:#3686FF; border-style:none; float:right; padding-right:5px;">
+					<img src="http://localhost:8080/static/verified.png" style="height:24px; width:24px; margin-top:5px; float:right;" title="Professor Verificado!"/>
+				</div>
+				
+			<br/>
+				
+			<div style="display:inline-block; color:#3686FF; border-style:none; margin-top:3px;">
+				<img src="http://localhost:8080/static/hat.png" style="height:24px; width:24px; padding-left:5px; margin-top:5px; padding-right:5px; float:left;"/>
+			
+				<div style="display:inline-block; color:#3686FF; border-style:none; margin-top:5px; padding:6px; padding-top:3px; float:left;">
+					$postereducatedat
+				</div>
+			</div>
+			
+			<br/>
+			
+			<div style="display:inline-block; color:#3686FF; border-style:none; margin-top:3px;">
+				<img src="http://localhost:8080/static/apple.png" style="height:24px; width:24px; padding-left:5px; padding-right:5px; float:left;"/>
+			
+				<div style="display:inline-block; color:#3686FF; border-style:none; padding:6px; padding-top:3px; float:left;">
+					$if posteristeacher:
+						$posterteachesat
+					$else:
+						(Não é Professor)
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div style="width:620px; padding:2px 5px 2px 5px; min-height:35px; display:inline-block; float:right; background-color:#fee8b3;
+																				/* Safari 4-5, Chrome 1-9 */
+																				background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fee8b3), to(#ffe094));
+																				/* Safari 5.1, Chrome 10+ */
+																				background: -webkit-linear-gradient(top, #ffe094 0px, #fee8b3 15px);
+																				/* Firefox 3.6+ */
+																				background: -moz-linear-gradient(top, #ffe094 0px, #fee8b3 15px);
+																				/* IE 10 */
+																				background: -ms-linear-gradient(top, #ffe094 0px, #fee8b3 15px);
+																				/* Opera 11.10+ */
+																				background: -o-linear-gradient(top, #ffe094 0px, #fee8b3 15px);" id="descriptionmiddle">
+
+		$if didvote:
+			$if isupvote:
+				<div style="display:inline-block; color:#3686FF; border-style:none; float:right;">
+					<div style="display:inline-block; color:#3686FF; border-style:none; padding:6px; padding-top:8px; float:right;">
+						$videodownvotes
+					</div>
+					<form action="" method="POST" style="display:inline;">
+						<input type="hidden" name="videoid" value="$videoid" />
+						<input type="image" name="downvotevideo" value="submit" src="http://localhost:8080/static/downvotegrey.png" style="height:24px; width:24px; margin-top:5px; float:right;"/>
+					</form>
+				</div>
+	
+	
+				<div style="display:inline-block; color:#3686FF; border-style:none; float:right;">
+					<div style="display:inline-block; color:#3686FF; border-style:none; padding:6px; padding-top:8px; float:right;">
+						$videoupvotes
+					</div>
+					<form action="" method="POST" style="display:inline;">
+						<input type="hidden" name="videoid" value="$videoid" />
+						<input type="image" name="un_upvotevideo" value="submit" src="http://localhost:8080/static/upvote.png" style="height:24px; width:24px; margin-top:5px; float:right;"/>
+					</form>
+				</div>
+			$else:
+				<div style="display:inline-block; color:#3686FF; border-style:none; float:right;">
+					<div style="display:inline-block; color:#3686FF; border-style:none; padding:6px; padding-top:8px; float:right;">
+						$videodownvotes
+					</div>
+					<form action="" method="POST" style="display:inline;">
+						<input type="hidden" name="videoid" value="$videoid" />
+						<input type="image" name="un_downvotevideo" value="submit" src="http://localhost:8080/static/downvote.png" style="height:24px; width:24px; margin-top:5px; float:right;"/>
+					</form>
+				</div>
+	
+	
+				<div style="display:inline-block; color:#3686FF; border-style:none; float:right;">
+					<div style="display:inline-block; color:#3686FF; border-style:none; padding:6px; padding-top:8px; float:right;">
+						$videoupvotes
+					</div>
+					<form action="" method="POST" style="display:inline;">
+						<input type="hidden" name="videoid" value="$videoid" />
+						<input type="image" name="upvotevideo" value="submit" src="http://localhost:8080/static/upvotegrey.png" style="height:24px; width:24px; margin-top:5px; float:right;"/>
+					</form>
+				</div>
+		$else:
+			<div style="display:inline-block; color:#3686FF; border-style:none; float:right;">
+				<div style="display:inline-block; color:#3686FF; border-style:none; padding:6px; padding-top:8px; float:right;">
+					$videodownvotes
+				</div>
+				<form action="" method="POST" style="display:inline;">
+					<input type="hidden" name="videoid" value="$videoid" />
+					<input type="image" name="downvotevideo" value="submit" src="http://localhost:8080/static/downvotegrey.png" style="height:24px; width:24px; margin-top:5px; float:right;"/>
+				</form>
+			</div>
+	
+	
+			<div style="display:inline-block; color:#3686FF; border-style:none; float:right;">
+				<div style="display:inline-block; color:#3686FF; border-style:none; padding:6px; padding-top:8px; float:right;">
+					$videoupvotes
+				</div>
+				<form action="" method="POST" style="display:inline;">
+					<input type="hidden" name="videoid" value="$videoid" />
+					<input type="image" name="upvotevideo" value="submit" src="http://localhost:8080/static/upvotegrey.png" style="height:24px; width:24px; margin-top:5px; float:right;"/>
+				</form>
+			</div>
+	
+	
+		<div style="display:inline-block; color:#3686FF; border-style:none; float:right;">
+			<div style="display:inline-block; color:#3686FF; border-style:none; padding:6px; padding-top:8px; float:left;">
+				$viewcount views&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+		</div>
+	
+		<div style="display:inline-block; color:#c98a03; font-weight:bold; border-style:none;" title="matéria relacionada à vídeo-aula">
+			<a href="/search?q=$subject" style="display:inline-block; color:#c98a03; font-weight:bold; border-style:none; padding-top:8px; padding-left:6px; text-decoration:none;">$subject</a>
+		</div>
+		
+		<br/>
+
+		$if topiclist:
+			<small>
+				$for topic in topiclist:
+					<div style="display:inline-block; color:#3686FF; border-style:none; padding:6px; padding-top:8px; float:left;">
+					<a href="/search?q=$topic" style="display:inline-block; color:#3686FF; border-style:none; float:left; text-decoration:none;">$topic</a>
+					</div>
+			</small>
+	
+		<br/>
+		<div style="padding:5px; width:100%; float:left;">
+			$videodescription
+		</div>	
+		
+		<div style="padding:5px; width:100%;" align='right'>
+			<div style="float:left; display:inline-block; margin-top:3px; color:#3686FF;"><small>$datetime</small></div>
+			<a href="/report?vid=$videoid" style="text-decoration:none; padding-right:10px; color:#3686FF;"><small>denunciar este vídeo</small></a>
+		</div>	
+		
+	</div>
+	
+	<div id="postcommentwrapper">
+		<form action="" method="POST" style="display:inline;">
+			<textarea style="width:885px; height:60px; resize:none;" placeholder="postar um comentário (pode ser feedback ou uma pergunta para o professor)"></textarea>
+				
+			<img src="$profpic" style="height:25px; width:25px; padding-top:7px; display:inline; float:left;" />
+			<div style="display:inline-block; color:#d99b16; font-weight:bold; padding-top:11px; padding-left:7px; float:left;">$username</div>
+			
+			<input type="submit" id="bigpostbutton" style="display:inline-block; float:right;" name="postcommentonvideo" value="postar">
+		
+		</form>
+	</div>
+	
+	<div style="display:inline-block; height:100px; width:100%;"><br/><br/><br/><br/>.</div>
+	
+	</div>
+	
+</div>
+</body>

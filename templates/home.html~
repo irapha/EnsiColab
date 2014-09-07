@@ -1,0 +1,138 @@
+$def with (error_msg)
+
+<head>
+
+<title>EnsiColab: Entrar/Inscrever</title>
+
+<style>
+	body {
+		font-family: sans-serif;
+		font-size:18px;
+		background-color:#e6e9ed;
+		/* Safari 4-5, Chrome 1-9 */
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e6e9ed), to(#8c8c8c));
+		/* Safari 5.1, Chrome 10+ */
+		background: -webkit-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* Firefox 3.6+ */
+		background: -moz-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* IE 10 */
+		background: -ms-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* Opera 11.10+ */
+		background: -o-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);		
+	}
+	#bigwrapper {
+		width: 100%;
+		min-height: 100%;
+	}
+	#headerwrapper {
+		width: 900px;
+		height:98px;
+		
+		border-width: 0px;
+	}
+	#logowrapper {
+		width:600px;
+		float:left;
+		display: block;
+		
+		border-width: 0px;
+	}
+	#logowrapper:hover {
+		cursor:pointer;
+	}
+	#loginwrapper {
+		width: 300px;
+		height: 98px;
+		float:right;
+		display: block;
+		
+		border-width: 0px;
+	}
+	#logintext {
+		width:210px;
+		height:30px;
+		font-size:18px;
+		padding-left:3px;
+		font-weight:bold;
+	}
+	#loginbutton {
+		width:210px;
+		height:30px;
+		font-size:18px;
+		border-radius:4px;
+		border-width:1px;
+		border-color:#71AAFF #236FE0 #236FE0 #71AAFF;
+		background-color:#3686FF;
+		color:#FFC445;
+		font-weight:bold;
+	}
+	#bodywrapper {
+		width:900px;
+		
+		border-width:0px;
+	}
+	#bigquote {
+		color:#236FE0;
+		font-size:26px;
+		font-weight:bold;
+		border-style:dashed;
+		border-color:#236FE0;
+		border-width:4px;
+		border-radius:5px;
+		padding:9px; 
+	}
+	#innerbody {
+		color:#0f428e;
+		font-size:20px;
+	}
+	#innerbody.h3 {
+		color:#3686FF;
+	}
+	#errorbox {
+		color:white;
+		background-color:red;
+		font-size:small;
+		font-weight:bold;
+		padding:4px;
+	}
+</style>
+
+</head>
+
+<body>
+<div id="bigwrapper" align="center">
+
+	<div id="headerwrapper">
+		
+		<div id="logowrapper" align="left" onclick="window.location = '/'"><img src="http://localhost:8080/static/EnsiColabLogo.png" /></div>
+		<div id="loginwrapper" align="right">
+			<form action="" method="POST" style="margin-top:2px;">
+				<input id="logintext" type="text" name="username_login" placeholder="usuário">
+				<input id="logintext" type="password" name="password_login" placeholder="senha">
+				<input id="loginbutton" type="submit" name="submit_login" value="entrar">
+			</form>
+		</div>
+		
+	</div>
+	
+	<div id="bodywrapper" align="left">
+		
+		<br/><br/>
+		
+		$if error_msg:
+			<div id="errorbox">$error_msg</div>
+			<br/><br/>
+					
+		<div id="bigquote" align="center">
+		Cada aluno aprende de maneira diferente.<br/>Com EnsiColab, todo professor é capaz de ensinar de todas as maneiras.<br/><a href="/about">Saiba Mais</a> ou <a href="/signup">Inscreva-se</a>
+		</div>
+		
+		<br/><br/>
+		
+		<div id="innerbody">
+			//featured video and other stuff
+		</div>	
+	</div>
+	
+</div>
+</body>

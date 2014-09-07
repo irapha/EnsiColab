@@ -1,0 +1,265 @@
+$def with (username, realname, bio, verified, profpic, upvotes, downvotes, isteacher, educatedat, teachesat, profilelink, error_msg, success, requested_verification=None)
+
+<head>
+
+<title>EnsiColab</title>
+
+<style>
+	body {
+		font-family: sans-serif;
+		font-size:18px;
+		background-color:#e6e9ed;
+		/* Safari 4-5, Chrome 1-9 */
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e6e9ed), to(#8c8c8c));
+		/* Safari 5.1, Chrome 10+ */
+		background: -webkit-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* Firefox 3.6+ */
+		background: -moz-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* IE 10 */
+		background: -ms-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* Opera 11.10+ */
+		background: -o-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);		
+	}
+	#bigwrapper {
+		width: 100%;
+		min-height: 100%;
+	}
+	#headerwrapper {
+		width: 900px;
+		height:98px;
+		
+		border-width: 0px;
+	}
+	#logowrapper {
+		width:590px;
+		float:left;
+		display: block;
+		
+		border-width: 0px;
+	}
+	#logowrapper:hover {
+		cursor:pointer;
+	}
+	#userinfowrapper {
+		width: 304px;
+		float: right;
+		display: block;
+		padding:0px;
+		background-color:#c98a03;
+		border-radius:4px;
+		background-color:rgba(201, 138, 3, 0.6);
+	}
+	#userinfotop {
+		width:300px;
+		border-style:none;
+		background-color:#FFC445;
+		padding:2px;
+		float:right;
+		border-radius: 4px 4px 0px 0px;
+		background-color:rgba(255, 196, 69, 1);
+	}
+	#logintext {
+		width:210px;
+		height:30px;
+		font-size:18px;
+		padding-left:3px;
+		font-weight:bold;
+	}
+	#loginbutton {
+		width:240px;
+		height:37px;
+		font-size:18px;
+		border-radius:4px;
+		border-width:1px;
+		border-color:#71AAFF #236FE0 #236FE0 #71AAFF;
+		background-color:#3686FF;
+		color:#FFC445;
+		font-weight:bold;
+	}
+	#loginbutton2 {
+		width:240px;
+		height:37px;
+		font-size:18px;
+		border-radius:4px;
+		border-width:1px;
+		border-color:#ffdb8d #c98a03 #c98a03 #ffdb8d;
+		background-color:#FFC445;
+		color:#3686FF;
+		font-weight:bold;
+	}
+	#bodywrapper {
+		width:900px;
+		
+		border-width:0px;
+	}
+	#bigquote {
+		color:#236FE0;
+		font-size:26px;
+		font-weight:bold;
+	}
+	#innerbody {
+		color:#0f428e;
+		font-size:20px;
+	}
+	#innerbody.h3 {
+		color:#3686FF;
+	}
+	#errorbox {
+		color:white;
+		background-color:red;
+		padding:4px;
+		font-size:small;
+		font-weight:bold;
+	}
+	#successbox {
+		color:white;
+		background-color:green;
+		padding:4px;
+		font-size:small;
+		font-weight:bold;
+	}
+	#bigpostbutton {
+		background-color:#c98a03;
+		color:#0f428e;
+		font-weight:bold;
+		padding-top:7px;
+		height:33px;
+		border-color:#ffc445 #664602 #664602 #ffc445;
+		border-style:solid;
+		border-width:1px;
+		border-radius:4px;
+		width:240px;
+	}
+	#bigpostbutton:active {
+		border-color: #664602 #ffc445 #ffc445 #664602;
+	}
+	#hoverforpointer:hover {
+		cursor:pointer;
+	}
+	input[type='text'], input[type='password'], label {
+		color:black;
+		width:650px;
+		height:40px;
+		font-size:18px;
+		padding-left:7px;
+	}
+</style>
+
+</head>
+
+<body>
+<div id="bigwrapper" align="center">
+
+	<div id="headerwrapper">
+		
+		<div id="logowrapper" align="left" onclick="window.location = '/'"><img src="http://localhost:8080/static/EnsiColabLogo.png" /></div>
+		
+	</div>
+	
+	<div id="bodywrapper" align="left">
+	
+	<br/><br/>
+	<div id="bigquote" align="left">
+	<img src="http://localhost:8080/static/settings.png" style="width:25px; height:25px; float:left; margin-top:2px;" />&nbsp;Preferências
+	</div>
+	
+	<br/>
+	
+	$if error_msg:
+		<div id="errorbox">$:error_msg</div><br/>
+	$if success:
+		<div id="successbox">$success</div><br/>
+	
+	<div id="innerbody" style="">
+		<form enctype="multipart/form-data" action="" method="POST">
+		
+		Alterar Nome de usuário <small>(<a href="/about?i=username">?</a>)</small><br/>
+		<input type="text" name="username_settings" placeholder="novo nome de usuário (atual: $username)">
+		<input type="submit" name="submit_username" value="alterar" id="loginbutton">
+		<br/><br/>
+		
+		Tipo de Conta:&nbsp;
+		$if isteacher:
+			Professor
+		$else:
+			Aluno
+		&nbsp;<small>(não pode ser alterado | <a href="/about?i=acctype">?</a>)</small><br/><br/>
+		
+		Alterar Nome <small>(<a href="/about?i=name">?</a>)</small><br/>
+		<input type="text" name="name_settings" placeholder="novo Nome (atual: $realname)">
+		<input type="submit" name="submit_name" value="alterar" id="loginbutton">
+		<br/><br/>
+		
+		Alterar Senha <small>(<a href="/about?i=password">?</a>)</small><br/>
+		<input type="password" name="oldpassword_settings" placeholder="senha atual">
+		<br/>
+		<input type="password" name="password_settings" placeholder="nova senha">
+		<br/>
+		<input type="password" name="passwordconfirm_settings" placeholder="confirmar nova senha">
+		<input type="submit" name="submit_password" value="alterar" id="loginbutton">
+		<br/><br/>
+		
+		Alterar Bio <small>(<a href="/about?i=bio">?</a>)</small><br/>
+		<textarea type="text" name="bio_settings" placeholder="nova bio (atual: $bio)" style="color:black; width:100%; height:100px; font-size:18px; padding-left:7px;"></textarea>
+		<input type="submit" name="submit_bio" value="alterar" id="loginbutton">
+		<br/><br/>
+		
+		Alterar Instituição de Formação <small>(<a href="/about?i=education">?</a>)</small><br/>
+		<input type="text" name="education_settings" placeholder="nova instituição de formação (atual: $educatedat)">
+		<input type="submit" name="submit_education" value="alterar" id="loginbutton">
+		<br/><br/>
+		
+		$if isteacher:
+			Alterar Instituição de Trabalho <small>(<a href="/about?i=job">?</a>)</small><br/>
+			<input type="text" name="job_settings" placeholder="nova instituição de trabalho (atual: $teachesat)">
+			<input type="submit" name="submit_job" value="alterar" id="loginbutton">
+			<br/><br/>
+		
+			<div style="border-style:dashed; border-color:#236FE0; border-width:3px; border-radius:5px; height:37px;">
+				<div style="display:inline-block; padding:7px 0px 0px 7px;">Verificação de Status de Professor <small>(<a href="/about?i=verify">o que é isso?</a>)</small></div>
+			
+				$if verified:
+					<div style="float:right; height:37px; width:240px; padding-top:6px; font-weight:bold; color:#3686FF;" align="center">
+					<div style="display:inline-block; width:140px;">
+					<img src="http://localhost:8080/static/verified.png" style="height:25px; width:25px; float:left;" />
+					<div style="display:inline-block; padding-top:2px;">Verificado!</div>
+					</div>
+					</div>
+				$else:
+					$if not requested_verification:
+						<input type="submit" name="verify_settings" value="pedir vericação" id="loginbutton2" style="float:right;">
+					$else:
+						<div style="float:right; height:37px; width:240px; padding-top:6px; font-weight:bold; color:#3686FF;" align="center">
+						
+						<div style="display:inline-block; padding-top:4px;"><a href="/about?i=verify_next"><small><small>Verificação Pendente</small></small></a></div>
+						
+						</div>
+			</div>
+		
+			<br/>
+		
+		Alterar Foto de Perfil: <small>(<a href="/about?i=profpic">?</a>)</small><br/>
+		
+		$if profpic != "static/NoPic.gif":
+			<img src="http://localhost:8080/$profpic" style="height:30px; width:30px; border-style:none; float:left; margin-top:4px; margin-right:7px;" />
+			<input type="submit" name="delete_profpic" value="excluir foto de perfil atual" id="loginbutton2">
+			
+		<div style="height:37px; display:inline-block; border-style:none;">
+			<div style="display:inline-block; padding-left:7px; padding-top:7px;">
+				<input type="file" name="photo" value="upload">
+			</div>
+		</div>
+		
+		<input type="submit" name="submit_profpic" value="alterar" id="loginbutton" style="float:right;">
+		
+		</form>
+		
+		
+		<br/><br/><br/><br/>
+		
+	</div>
+	
+	</div>
+	
+</div>
+</body>

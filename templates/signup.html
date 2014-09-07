@@ -1,0 +1,160 @@
+$def with (error_msg=None)
+
+<head>
+
+<title>EnsiColab: Inscrever</title>
+
+<style>
+	body {
+		font-family: sans-serif;
+		font-size:18px;
+		background-color:#e6e9ed;
+		/* Safari 4-5, Chrome 1-9 */
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e6e9ed), to(#8c8c8c));
+		/* Safari 5.1, Chrome 10+ */
+		background: -webkit-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* Firefox 3.6+ */
+		background: -moz-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* IE 10 */
+		background: -ms-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* Opera 11.10+ */
+		background: -o-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);		
+	}
+	#bigwrapper {
+		width: 100%;
+		min-height: 98%;
+	}
+	#headerwrapper {
+		width: 900px;
+		height:98px;
+		
+		border-width: 0px;
+	}
+	#logowrapper {
+		width:600px;
+		float:left;
+		display: block;
+		
+		border-width: 0px;
+	}
+	#logowrapper:hover {
+		cursor:pointer;
+	}
+	#loginwrapper {
+		width: 300px;
+		height: 98px;
+		float:right;
+		display: block;
+		
+		border-width: 0px;
+	}
+	#logintext {
+		width:210px;
+		height:30px;
+		font-size:18px;
+		padding-left:3px;
+		font-weight:bold;
+	}
+	#loginbutton {
+		width:210px;
+		height:30px;
+		font-size:18px;
+		border-radius:0;
+		border-color:#71AAFF #236FE0 #236FE0 #71AAFF;
+		background-color:#3686FF;
+		color:#FFC445;
+		font-weight:bold;
+	}
+	#bodywrapper {
+		width:900px;
+		
+		border-width:0px;
+	}
+	#bigquote {
+		color:#236FE0;
+		font-size:26px;
+		font-weight:bold;
+	}
+	#innerbody {
+		color:#0f428e;
+		font-size:20px;
+	}
+	#innerbody.h3 {
+		color:#3686FF;
+	}
+	#errorbox {
+		background-color:red;
+		color:white;
+		font-size:small;
+		font-weight:bold;
+		padding:4px;
+	}
+	input[type='text'], input[type='password'], label {
+		color:black;
+		width:100%;
+		height:40px;
+		font-size:18px;
+		padding-left:7px;
+	}
+	
+</style>
+
+</head>
+
+<body>
+<div id="bigwrapper" align="center">
+
+	<div id="headerwrapper">
+		
+		<div id="logowrapper" align="left" onclick="window.location = '/'"><img src="http://localhost:8080/static/EnsiColabLogo.png" /></div>
+		
+	</div>
+	
+	<div id="bodywrapper" align="left">
+		
+		
+		
+		$if error_msg:
+			<div id="errorbox">$error_msg</div>
+		
+		<br/>			
+		<div id="bigquote" align="left">
+		Inscreva-se!   
+		<span style="font-size:18px;">(ou <a href="/about">Saiba Mais</a>)</span>
+		</div>
+		
+		<br/>
+		<div style="width:100%; color:#236FE0; font-size:small; font-weight:bold; background-color:#c8cacd; padding:20px;">
+		OBS: Se você estiver preocupado com privacidade, fique à vontade para inventar um nome e/ou informações sobre sua formação acadêmica. Porém, saiba que isso lhe impedirá de ser verificado como um professor por nossa equipe. Você poderá, é claro, mudar essas informações nas suas preferências de perfil.
+		</div>
+		<br/>
+		
+		<div id="innerbody" style="padding:0px 40px 0px 40px;">
+			
+			<div style="width:100%;">
+				<form action="" method="POST" enctype="multipart/form-data">
+					<input type="text" name="username" placeholder="usuário (usado para entrar no site)"><br/><br/>
+					<input type="password" name="password" placeholder="senha"><br/><br/>
+					<input type="password" name="passwordconfirm" placeholder="confirmar senha"><br/><br/>
+					<input type="text" name="realname" placeholder="Nome"><br/><br/>
+					<textarea type="text" name="bio" placeholder="bio (inclua curso(s) de formação)" style="color:black; width:100%; height:100px; font-size:18px; padding-left:7px;"></textarea><br/><br/>
+					<span style="color:#8f8a88;">Foto de perfil (opcional): </span><input type="file" name="photo" value="upload"><br/><br/>
+					
+					<span style="color:#8f8a88;">Sou...</span><br/>
+					<input type="radio" name="profoualuno" id="radio1" value="professor">
+					<label for="radio1"> professor</label>
+					<input type="radio" name="profoualuno" id="radio2" value="aluno">
+					<label for="radio2"> aluno</label>
+					<br/><br/>
+					<input type="text" name="education" placeholder="instituição de estudo (para professores e alunos)"><br/><br/>
+					<input type="text" name="job" placeholder="instituição de trabalho (para professores)">
+					<br/><br/>
+					<input type="submit" name="submit" value="inscrever" style="width:100%; height:40px; font-size:18px; border-radius:4px; border-width:1px; border-color:#71AAFF #236FE0 #236FE0 #71AAFF; background-color:#3686FF; color:#FFC445; font-weight:bold;">
+				</form>
+			</div>
+			
+		</div>	
+	</div>
+	
+</div>
+</body>

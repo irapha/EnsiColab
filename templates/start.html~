@@ -1,0 +1,232 @@
+$def with (username, verified, profpic, upvotes, downvotes, isteacher, educatedat, teachesat, profilelink)
+
+<head>
+
+<title>EnsiColab</title>
+
+<style>
+	body {
+		font-family: sans-serif;
+		font-size:18px;
+		background-color:#e6e9ed;
+		/* Safari 4-5, Chrome 1-9 */
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e6e9ed), to(#8c8c8c));
+		/* Safari 5.1, Chrome 10+ */
+		background: -webkit-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* Firefox 3.6+ */
+		background: -moz-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* IE 10 */
+		background: -ms-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);
+		/* Opera 11.10+ */
+		background: -o-linear-gradient(top, #8c8c8c 0px, #e6e9ed 150px);		
+	}
+	#bigwrapper {
+		width: 100%;
+		min-height: 100%;
+	}
+	#headerwrapper {
+		width: 900px;
+		height:98px;
+		
+		border-width: 0px;
+	}
+	#logowrapper {
+		width:590px;
+		float:left;
+		display: block;
+		
+		border-width: 0px;
+	}
+	#logowrapper:hover {
+		cursor:pointer;
+	}
+	#userinfowrapper {
+		width: 304px;
+		float: right;
+		display: block;
+		padding:0px;
+		border-radius:4px;
+		background-color:#fee8b3;
+		color:#3686FF;
+	}
+	#userinfotop {
+		width:300px;
+		border-style:none;
+		padding:2px;
+		float:right;
+		border-radius: 4px 4px 0px 0px;
+		background-color:#fee8b3;
+		color:#3686FF;
+	}
+	#logintext {
+		width:210px;
+		height:30px;
+		font-size:18px;
+		padding-left:3px;
+		font-weight:bold;
+	}
+	#loginbutton {
+		width:210px;
+		height:30px;
+		font-size:18px;
+		border-radius:4px;
+		border-width:1px;
+		border-color:#71AAFF #236FE0 #236FE0 #71AAFF;
+		background-color:#3686FF;
+		color:#FFC445;
+		font-weight:bold;
+	}
+	#bodywrapper {
+		width:900px;
+		
+		border-width:0px;
+	}
+	#bigquote {
+		color:#236FE0;
+		font-size:26px;
+		font-weight:bold;
+	}
+	#innerbody {
+		color:#0f428e;
+		font-size:20px;
+	}
+	#innerbody.h3 {
+		color:#3686FF;
+	}
+	#errorbox {
+		color:white;
+		background-color:red;
+		padding:4px;
+		font-size:small;
+		font-weight:bold;
+	}
+	#bigpostbutton {
+		font-weight:bold;
+		padding-top:7px;
+		height:33px;
+		border-color:#ffdb8d #c98a03 #c98a03 #ffdb8d;
+		background-color:#FFC445;
+		color:#3686FF;
+		border-style:solid;
+		border-width:1px;
+		border-radius:4px;
+	}
+	#bigpostbutton:active {
+		border-color: #c98a03 #ffdb8d #ffdb8d #c98a03;
+	}
+	#hoverforpointer:hover {
+		cursor:pointer;
+	}
+	input[type='text'], input[type='password'], label {
+		color:black;
+		width:100%;
+		height:40px;
+		font-size:18px;
+		padding-left:7px;
+	}
+</style>
+
+</head>
+
+<body>
+<div id="bigwrapper" align="center">
+
+	<div id="headerwrapper">
+		
+		<div id="logowrapper" align="left" onclick="window.location = '/'"><img src="http://localhost:8080/static/EnsiColabLogo.png" /></div>
+		
+		
+		
+		<div id="userinfowrapper" align="left">
+			<div id="userinfotop" align="left">
+				<img src="$profpic" style="max-height:30px; max-width:30px; margin:2px; border-style:none; float:left;" />
+				<div style="display:inline-block; color:#3686FF; font-weight:bold; border-style:none; padding:6px; padding-top:8px;">
+					<div onclick="window.location = '$profilelink'" id="hoverforpointer">
+					$username
+					</div>
+				</div>
+				
+				<div style="float:right; padding:8px 8px 6px 6px;">
+					<a href="/logout" style="color:#3686FF; text-decoration:none;">
+					(sair)
+					</a>
+				</div>
+				
+				<div id="hoverforpointer" style="float:right;">
+					<img title="preferências" src="/static/settings.png" onclick="window.location = '/settings'" style="width:20px; height:20px; margin-top:8px; margin-bottom:7px;" />
+				</div>
+				
+				
+				$if verified:
+					<div style="float:right; margin-right:6px;">
+						<img title="Verificado!" src="/static/verified.png" style="width:25px; height:25px; margin-top:5px; margin-bottom:2px;" />
+					</div>
+				$else:
+					<div id="hoverforpointer" style="float:right; margin-right:6px;">
+						<img title="Não verificado.
+						Clique para saber mais." src="/static/verifiedgrey.png" onclick="window.location = '/about?i=verify'" style="width:25px; height:25px; margin-top:5px; margin-bottom:2px;" />
+					</div>
+				
+			</div>
+			
+			
+			
+			<div style=" width:177px; border-style:none; padding:0px 7px 4px 7px; display:inline-block;" align="left">
+				
+				<div>
+					<img src="http://localhost:8080/static/hat.png" style="height:25px; width:25px; float:left;"/>
+					<div style="font-size:14px; color:#3686FF; font-weight:bold; display:inline-block; padding:6px 0px 0px 7px;">$educatedat</div>
+				</div>
+				
+				<div style="padding-top:4px;">
+					<img src="http://localhost:8080/static/apple.png" style="height:25px; width:25px; float:left;"/>
+					<div style="font-size:14px; color:#3686FF; font-weight:bold; display:inline-block; padding:4px 0px 0px 7px;">
+					$if isteacher:
+						$teachesat
+					$else:
+						(Não é Professor)
+					</div>
+				</div>
+				
+			</div>
+			
+			<div style="display:inline-block; border-style:none; width:106px; float:right; color:#3686FF; padding-top:0px;">
+				<small>
+				
+				<div style="width:100%; padding-top:2px;">
+					<img src="http://localhost:8080/static/upvote.png" style="width:20px; height:20px; float:left;" />
+					<div style="font-weight:bold; display:inline-block; padding:2px 0px 0px 10px;">$upvotes</div>
+				</div>
+				
+				<div style="width:100%; padding-top:8px;">
+					<img src="http://localhost:8080/static/downvote.png" style="width:20px; height:20px; float:left;" />
+					<div style="font-weight:bold; display:inline-block; padding:2px 0px 0px 10px;">$downvotes</div>
+				</div>
+				
+				</small>
+			</div>
+		</div>
+	</div>
+	
+	<div id="bodywrapper" align="left">
+	
+	<br/>
+	<div id="bigpostbutton" align="center" onclick="window.location = '/upload'">
+		<div style="width:190px; height:25px;">
+			
+			<div style="display:inline-block; padding:3px;"> postar um vídeo</div>
+		 </div>
+	</div>
+	<br/>
+	//search bar
+	//em destaque
+	//explore
+	//recommended for you (based on... INTERESTS)
+	
+	//content goes here
+	<br/><br/><br/><br/>
+	
+	</div>
+	
+</div>
+</body>
